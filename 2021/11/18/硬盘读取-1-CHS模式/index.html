@@ -20,22 +20,24 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="图片测试这是我的帅头像">
+  <meta name="description" content="介绍硬盘读取大体分为三个模式，CHS、LBA24和LBA48，本文主要介绍CHS模式的工作方式。 CHS三个字母代表磁头（Heads）、柱面(Cylinder)、扇区(Sector)，即通过告知CPU磁头号、柱面号、扇区号，即可获取到硬盘上的数据。 硬盘解构示意图：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ImageTest">
-<meta property="og:url" content="http://example.com/2021/11/17/ImageTest/index.html">
+<meta property="og:title" content="硬盘读取(1)--CHS模式">
+<meta property="og:url" content="http://example.com/2021/11/18/%E7%A1%AC%E7%9B%98%E8%AF%BB%E5%8F%96-1-CHS%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="基尘的博客">
-<meta property="og:description" content="图片测试这是我的帅头像">
+<meta property="og:description" content="介绍硬盘读取大体分为三个模式，CHS、LBA24和LBA48，本文主要介绍CHS模式的工作方式。 CHS三个字母代表磁头（Heads）、柱面(Cylinder)、扇区(Sector)，即通过告知CPU磁头号、柱面号、扇区号，即可获取到硬盘上的数据。 硬盘解构示意图：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://jichen-blog.oss-cn-beijing.aliyuncs.com/ImageTest/gua.jpg">
-<meta property="article:published_time" content="2021-11-17T08:15:43.000Z">
-<meta property="article:modified_time" content="2021-11-17T08:57:27.141Z">
+<meta property="og:image" content="http://jichen-blog.oss-cn-beijing.aliyuncs.com/%E7%A1%AC%E7%9B%98%E8%AF%BB%E5%8F%96-1-CHS%E6%A8%A1%E5%BC%8F/%E7%A1%AC%E7%9B%98%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://jichen-blog.oss-cn-beijing.aliyuncs.com/%E7%A1%AC%E7%9B%98%E8%AF%BB%E5%8F%96-1-CHS%E6%A8%A1%E5%BC%8F/INT13,2.png">
+<meta property="article:published_time" content="2021-11-18T03:58:57.000Z">
+<meta property="article:modified_time" content="2021-11-18T05:59:33.174Z">
 <meta property="article:author" content="jiChen">
-<meta property="article:tag" content="测试">
+<meta property="article:tag" content="“x86汇编&quot;">
+<meta property="article:tag" content="硬件交互">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jichen-blog.oss-cn-beijing.aliyuncs.com/ImageTest/gua.jpg">
+<meta name="twitter:image" content="http://jichen-blog.oss-cn-beijing.aliyuncs.com/%E7%A1%AC%E7%9B%98%E8%AF%BB%E5%8F%96-1-CHS%E6%A8%A1%E5%BC%8F/%E7%A1%AC%E7%9B%98%E7%BB%93%E6%9E%84.png">
 
-<link rel="canonical" href="http://example.com/2021/11/17/ImageTest/">
+<link rel="canonical" href="http://example.com/2021/11/18/%E7%A1%AC%E7%9B%98%E8%AF%BB%E5%8F%96-1-CHS%E6%A8%A1%E5%BC%8F/">
 
 
 <script id="page-configurations">
@@ -48,7 +50,7 @@
   };
 </script>
 
-  <title>ImageTest | 基尘的博客</title>
+  <title>硬盘读取(1)--CHS模式 | 基尘的博客</title>
   
 
 
@@ -163,7 +165,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/17/ImageTest/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/18/%E7%A1%AC%E7%9B%98%E8%AF%BB%E5%8F%96-1-CHS%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -176,7 +178,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          ImageTest
+          硬盘读取(1)--CHS模式
         </h1>
 
         <div class="post-meta">
@@ -187,7 +189,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-11-17 16:15:43 / 修改时间：16:57:27" itemprop="dateCreated datePublished" datetime="2021-11-17T16:15:43+08:00">2021-11-17</time>
+              <time title="创建时间：2021-11-18 11:58:57 / 修改时间：13:59:33" itemprop="dateCreated datePublished" datetime="2021-11-18T11:58:57+08:00">2021-11-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -195,7 +197,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">测试</span></a>
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
                 </span>
             </span>
 
@@ -217,8 +219,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="图片测试"><a href="#图片测试" class="headerlink" title="图片测试"></a>图片测试</h1><p>这是我的帅头像</p>
-<p><img src="https://jichen-blog.oss-cn-beijing.aliyuncs.com/ImageTest/gua.jpg" alt="gua"></p>
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>硬盘读取大体分为三个模式，CHS、LBA24和LBA48，本文主要介绍CHS模式的工作方式。</p>
+<p>CHS三个字母代表磁头（Heads）、柱面(Cylinder)、扇区(Sector)，即通过告知CPU磁头号、柱面号、扇区号，即可获取到硬盘上的数据。</p>
+<p>硬盘解构示意图：</p>
+<p><img src="http://jichen-blog.oss-cn-beijing.aliyuncs.com/%E7%A1%AC%E7%9B%98%E8%AF%BB%E5%8F%96-1-CHS%E6%A8%A1%E5%BC%8F/%E7%A1%AC%E7%9B%98%E7%BB%93%E6%9E%84.png" alt="硬盘结构示意图"></p>
+<p>在此模式下可以较为容易的访问硬盘中的数据。</p>
+<h1 id="x86下的读盘方式"><a href="#x86下的读盘方式" class="headerlink" title="x86下的读盘方式"></a>x86下的读盘方式</h1><p>在Intel的中断表中，我们可以查询到有关硬盘操作的终端为INT13，其中有关读盘的部分为：</p>
+<p><img src="http://jichen-blog.oss-cn-beijing.aliyuncs.com/%E7%A1%AC%E7%9B%98%E8%AF%BB%E5%8F%96-1-CHS%E6%A8%A1%E5%BC%8F/INT13,2.png" alt="INT13,2"></p>
+<p>通过上表可知，我们使<code>AH=0x02,AL=读入磁道数,CH=柱面号,CL=磁道号,DH=磁头号,DL=盘号</code>，然后调用0x13号中断，即可向<code>ES:BX</code>指向的位置连续写入数据。其中扇区号、柱面号、磁头号都是从0编号。在调用INT 0x13后会在CF返回一个状态信息，0为成功，1为失败。</p>
+<p>以下代码展示了在0号柱面0号扇区0号磁头位置，读取4个磁道的数据至0x0900:0x0200的位置。（采用AT&amp;T语法非Intel语法）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">_loadDemo:</span><br><span class="line">	mov $0x0000, %dx </span><br><span class="line">	mov $0x0002, %cx</span><br><span class="line">	mov $0x900, %ax</span><br><span class="line">	mov %ax, %es</span><br><span class="line">	mov $0x0200, %bx</span><br><span class="line">	mov $0x02, %ah</span><br><span class="line">	mov $0x04, %al</span><br><span class="line">_readDemo:</span><br><span class="line">	int $0x13</span><br><span class="line">	jnc _demoLoadOk	//读取直到成功</span><br><span class="line">	//...</span><br></pre></td></tr></table></figure>
+
+<h1 id="CHS的缺点"><a href="#CHS的缺点" class="headerlink" title="CHS的缺点"></a>CHS的缺点</h1><p>CHS语法在目前已不适用于大多数机器，可以发现磁头数最大为 256 ，柱面数最大为 1024，扇区数最大为63 。可以访问的最大容量为：</p>
+<p>256 * 1024 * 63 * 512 / 1048576 = 8064 MB</p>
+<p>不到8G的硬盘访问很难支持现在市场上的大部分设备，因此在现在的设计中CHS已被废弃，但考虑到兼容性还是保留了这一种访问方式。</p>
+<p>在之后将介绍支持更大硬盘容量访问的LBA24和LBA48。</p>
+<p>参考资料：</p>
+<p><a target="_blank" rel="noopener" href="https://stanislavs.org/helppc/int_table.html">1.https://stanislavs.org/helppc/int_table.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cylinder-head-sector">2.https://en.wikipedia.org/wiki/Cylinder-head-sector</a></p>
 
     </div>
 
@@ -228,7 +246,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%B5%8B%E8%AF%95/" rel="tag"># 测试</a>
+              <a href="/tags/%E2%80%9Cx86%E6%B1%87%E7%BC%96/" rel="tag"># “x86汇编"</a>
+              <a href="/tags/%E7%A1%AC%E4%BB%B6%E4%BA%A4%E4%BA%92/" rel="tag"># 硬件交互</a>
           </div>
 
         
@@ -237,13 +256,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/11/17/test/" rel="prev" title="test">
-      <i class="fa fa-chevron-left"></i> test
+    <a href="/2021/11/17/ImageTest/" rel="prev" title="ImageTest">
+      <i class="fa fa-chevron-left"></i> ImageTest
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/11/18/%E7%A1%AC%E7%9B%98%E8%AF%BB%E5%8F%96-1-CHS%E6%A8%A1%E5%BC%8F/" rel="next" title="硬盘读取(1)--CHS模式">
-      硬盘读取(1)--CHS模式 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -302,7 +318,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95"><span class="nav-number">1.</span> <span class="nav-text">图片测试</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#x86%E4%B8%8B%E7%9A%84%E8%AF%BB%E7%9B%98%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">x86下的读盘方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CHS%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">CHS的缺点</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
