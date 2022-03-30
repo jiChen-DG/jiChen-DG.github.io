@@ -155,6 +155,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/29/CMake-%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="jiChen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="基尘的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/29/CMake-%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">CMake 入门(未完成)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-29 15:21:57" itemprop="dateCreated datePublished" datetime="2022-03-29T15:21:57+08:00">2022-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-30 23:44:40" itemprop="dateModified" datetime="2022-03-30T23:44:40+08:00">2022-03-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h1 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h1><ul>
+<li><code>PROJECT(projectname [CXX] [C] [Java])</code> <br/><br>指定工程名称，工程编译语言</li>
+<li><code>SET(VAR [VALUE] [CACHE TYPE DOCSTRING [FORCE]])</code> <br/><br>显式定义变量,如:<code>SET(SRC_LIST main.c)</code> <br/><br>或可定义多个源文件，如:<code>SET(SRC_LIST main.c test1.c test2.c)</code></li>
+<li><code>MESSAGE([SEND_ERROR | STATUS | FATAL_ERROR] &quot;message to display&quot; ...) </code> <br/> 向终端输出用户自定义信息，包括:</br><ol>
+<li><code>SEND_ERROR</code>，产生错误，生成过程被跳过</li>
+<li><code>STATUS</code>，输出前缀为<code>--</code>的信息</li>
+<li><code>FATAL_ERROR</code>，立即终止所有cmake过程</li>
+</ol>
+</li>
+<li><code>ADD_EXECUTABLE(a.out $&#123;SRC_LIST&#125;)</code> <br/><br>生成名为<code>a.out</code>的可执行文件，源文件为<code>$&#123;SRC_LIST&#125;</code> 中包含的文件</li>
+<li><code>&lt;projectname&gt;_SOURCE_DIR</code> 工程目录 <br/><br><code>&lt;projectname&gt;_BINARY_DIR</code> 编译路径</li>
+<li><code>ADD_SUBDIRECTORY(source_dir [binary_dir] [EXCLUDE_FROM_ALL])</code> <br/><br>添加存放源文件的子目录,并可以指定中间二进制和目标二进制存放的位置。<code>EXCLUDE_FROM_ALL</code> 可将该目录从编译过程移除。</li>
+<li><code>SUBDIRS(dir1 dir2...)</code>(不推荐) <br/><br>添加多个子目录</li>
+<li><code>EXECUTABLE_OUTPUT_PATH</code> 与 <code>LIBRARY_OUTPUT_PATH</code>: 最终目标二进制位置。<br/><br>可通过<code>SET</code>设置</li>
+<li><h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1></li>
+</ul>
+<p>…未完成</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/22/MacOS%E5%AE%89%E8%A3%85consolars%E5%AD%97%E4%BD%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -178,10 +268,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-11-22 13:31:17 / 修改时间：14:23:41" itemprop="dateCreated datePublished" datetime="2021-11-22T13:31:17+08:00">2021-11-22</time>
+              <time title="创建时间：2021-11-22 13:31:17" itemprop="dateCreated datePublished" datetime="2021-11-22T13:31:17+08:00">2021-11-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-29 14:43:49" itemprop="dateModified" datetime="2022-03-29T14:43:49+08:00">2022-03-29</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -203,8 +299,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>本文针对想在MacOS中安装并使用Colsolars字体的人，并且电脑上安装有Microsofr Word。</p>
-<p>未安装Microsftf Word的机器需要手动下载Colsolars字体，本文不提供教程。</p>
+          <p>本文针对想在MacOS中安装并使用Consolars字体的人，并且电脑上安装有Microsofr Word。</p>
+<p>未安装Microsftf Word的机器需要手动下载Consolars字体，本文不提供教程。</p>
 <p>步骤较为简单，首先终端进入下面路径:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Applications/Microsoft\ Word.app/Contents/Resources/DFonts</span><br></pre></td></tr></table></figure>
 
@@ -598,7 +694,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -611,7 +707,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -638,7 +734,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
