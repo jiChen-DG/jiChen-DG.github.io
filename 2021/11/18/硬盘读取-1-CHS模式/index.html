@@ -15,21 +15,15 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<% if (page.keywords){ %>
-<meta name="keywords" content="<%= page.keywords %>,<%= config.keywords %>">
-<% } else if (config.keywords){ %>
-<meta name="keywords" content="<%= config.keywords %>">
-<%} %>
-
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"jichen-dg.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="介绍硬盘读取大体分为三个模式，CHS、LBA24和LBA48，本文主要介绍CHS模式的工作方式。 CHS三个字母代表磁头（Heads）、柱面(Cylinder)、扇区(Sector)，即通过告知CPU磁头号、柱面号、扇区号，即可获取到硬盘上的数据。 硬盘解构示意图：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="硬盘读取(1)--CHS模式">
-<meta property="og:url" content="http://example.com/2021/11/18/%E7%A1%AC%E7%9B%98%E8%AF%BB%E5%8F%96-1-CHS%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:url" content="http://jichen-dg.github.io/2021/11/18/%E7%A1%AC%E7%9B%98%E8%AF%BB%E5%8F%96-1-CHS%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="基尘的博客">
 <meta property="og:description" content="介绍硬盘读取大体分为三个模式，CHS、LBA24和LBA48，本文主要介绍CHS模式的工作方式。 CHS三个字母代表磁头（Heads）、柱面(Cylinder)、扇区(Sector)，即通过告知CPU磁头号、柱面号、扇区号，即可获取到硬盘上的数据。 硬盘解构示意图：">
 <meta property="og:locale" content="zh_CN">
@@ -44,7 +38,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://jichen-blog.oss-cn-beijing.aliyuncs.com/%E7%A1%AC%E7%9B%98%E8%AF%BB%E5%8F%96-1-CHS%E6%A8%A1%E5%BC%8F/%E7%A1%AC%E7%9B%98%E7%BB%93%E6%9E%84.png">
 
-<link rel="canonical" href="http://example.com/2021/11/18/%E7%A1%AC%E7%9B%98%E8%AF%BB%E5%8F%96-1-CHS%E6%A8%A1%E5%BC%8F/">
+<link rel="canonical" href="http://jichen-dg.github.io/2021/11/18/%E7%A1%AC%E7%9B%98%E8%AF%BB%E5%8F%96-1-CHS%E6%A8%A1%E5%BC%8F/">
 
 
 <script id="page-configurations">
@@ -172,7 +166,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/18/%E7%A1%AC%E7%9B%98%E8%AF%BB%E5%8F%96-1-CHS%E6%A8%A1%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="http://jichen-dg.github.io/2021/11/18/%E7%A1%AC%E7%9B%98%E8%AF%BB%E5%8F%96-1-CHS%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
