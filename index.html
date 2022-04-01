@@ -155,6 +155,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://jichen-dg.github.io/2022/04/01/C-%E5%B8%B8%E7%94%A8VSCode%E7%94%A8%E6%88%B7%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="jiChen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="基尘的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/01/C-%E5%B8%B8%E7%94%A8VSCode%E7%94%A8%E6%88%B7%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/" class="post-title-link" itemprop="url">C++常用VSCode用户代码片段</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-01 19:33:49 / 修改时间：19:38:35" itemprop="dateCreated datePublished" datetime="2022-04-01T19:33:49+08:00">2022-04-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li>main函数: <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  	<span class="string">&quot;C++ Main&quot;</span>: &#123;</span><br><span class="line">	<span class="attr">&quot;scope&quot;</span>: <span class="string">&quot;cpp&quot;</span>,</span><br><span class="line">	<span class="attr">&quot;prefix&quot;</span>: <span class="string">&quot;main&quot;</span>,</span><br><span class="line">	<span class="attr">&quot;body&quot;</span>: [</span><br><span class="line">		<span class="string">&quot;int main(int argc, char** argv) &#123;&quot;</span>,</span><br><span class="line">		<span class="string">&quot;$&#123;0&#125;&quot;</span>,</span><br><span class="line">		<span class="string">&quot; return 0;&quot;</span>,</span><br><span class="line">		<span class="string">&quot;&#125;;&quot;</span></span><br><span class="line">	],</span><br><span class="line">	<span class="attr">&quot;description&quot;</span>: <span class="string">&quot;C++ main函数&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>类声明<br>&#96;&#96;&#96;json<br>“C++ Generate Class”: {<br> “scope”: “h, cpp”,<br> “prefix”: “-c”,<br> “body”: [<br>     “#ifndef $1_H”,<br>     “#define $1_H”,<br>     “”,<br>     “class $2{“,<br>     “$3”,<br>     “}”,<br>     “”,<br>     “#endif”<br> ],<br> “description”: “C++ 类定义避免头文件重复引用”<br> }</li>
+</ol>
+<p>… 待更新</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://jichen-dg.github.io/2022/03/29/CMake-%E5%85%A5%E9%97%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -259,7 +331,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/22/MacOS%E5%AE%89%E8%A3%85consolars%E5%AD%97%E4%BD%93/" class="post-title-link" itemprop="url">MacOS安装consolars字体</a>
+            <a href="/2021/11/22/MacOS%E5%AE%89%E8%A3%85consolars%E5%AD%97%E4%BD%93/" class="post-title-link" itemprop="url">MacOS安装consolas字体</a>
         </h2>
 
         <div class="post-meta">
@@ -276,7 +348,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-31 11:31:02" itemprop="dateModified" datetime="2022-03-31T11:31:02+08:00">2022-03-31</time>
+                <time title="修改时间：2022-03-31 19:30:24" itemprop="dateModified" datetime="2022-03-31T19:30:24+08:00">2022-03-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -299,8 +371,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>本文针对想在MacOS中安装并使用Consolars字体的人，并且电脑上安装有Microsofr Word。</p>
-<p>未安装Microsftf Word的机器需要手动下载Consolars字体，本文不提供教程。</p>
+          <p>本文针对想在MacOS中安装并使用Consolas字体的人，并且电脑上安装有Microsoft Word。</p>
+<p>未安装Microsoft Word的机器需要手动下载Consolas字体，本文不提供教程。</p>
 <p>步骤较为简单，首先终端进入下面路径:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Applications/Microsoft\ Word.app/Contents/Resources/DFonts</span><br></pre></td></tr></table></figure>
 
@@ -700,7 +772,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -713,7 +785,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
